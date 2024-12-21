@@ -1,0 +1,16 @@
+{
+    "moduleNameMapper": {
+        "@rubensworks/solid-client-authn-browser": "../tests/jestStubEmpty.js",
+        "yasgui-yasqe/dist/yasqe.css": "../tests/jestStubEmpty.js",
+        "leaflet/dist/leaflet.css": "../tests/jestStubEmpty.js",
+        "leaflet/dist/images/layers.png": "../tests/jestStubEmpty.js",
+        "leaflet/dist/images/layers-2x.png": "../tests/jestStubEmpty.js",
+        "leaflet/dist/images/marker-icon.png": "../tests/jestStubEmpty.js",
+        "leaflet/dist/images/marker-icon-2x.png": "../tests/jestStubEmpty.js",
+        "leaflet/dist/images/marker-shadow.png": "../tests/jestStubEmpty.js",
+        "comunica-packagejson": "../tests/jestStubEmpty.js"
+    },
+    "setupFiles": [
+        "./tests/__mocks__/client.js"
+    ]
+}

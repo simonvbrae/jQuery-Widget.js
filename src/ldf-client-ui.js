@@ -8,16 +8,20 @@ window.jQuery = require('../deps/jquery-2.1.0.js');
 var N3 = require('n3');
 var RdfString = require('rdf-string');
 var resolve = require('relative-to-absolute-iri').resolve;
+console.log(-5);
 var solidAuth = require('@rubensworks/solid-client-authn-browser');
+console.log(-4);
 
 // This exports map-related dependencies
 var L = require('leaflet');
 var turf = require('@turf/centroid');
 var Wkt = require('wicket/wicket-leaflet');
+console.log(-3);
 
 // Comment out the following two lines if you want to disable YASQE
 var YASQE = require('yasgui-yasqe/src/main.js');
 require('yasgui-yasqe/dist/yasqe.css'); // Make webpack import the css as well
+console.log(-2);
 
 // Import leaflet styles
 require('leaflet/dist/leaflet.css');
@@ -26,11 +30,12 @@ require('leaflet/dist/images/layers-2x.png');
 require('leaflet/dist/images/marker-icon.png');
 require('leaflet/dist/images/marker-icon-2x.png');
 require('leaflet/dist/images/marker-shadow.png');
+console.log(-1);
 
 // Polyfill process for readable-stream when it is not defined
 if (typeof global.process === 'undefined')
   global.process = require('process');
-
+console.log(0);
 (function ($) {
   // Query UI main entry point, which mimics the jQuery UI widget interface:
   // - $(element).queryui(options) initializes the widget
@@ -71,13 +76,17 @@ if (typeof global.process === 'undefined')
   // Creates a new Query UI interface for the given element
   function LdfQueryUI($element, options) {
     this.element = $element;
+    console.log(1);
     this.options = $.extend({}, this.options, options);
-
+    console.log(2);
+    
     // Create the query execution Web Worker
     this._createQueryWorker();
-
+    console.log(3);
+    
     // Initialize the query text tabs
     this._initQueryTabs();
+    console.log(4);
   }
 
   LdfQueryUI.prototype = {
@@ -684,6 +693,7 @@ if (typeof global.process === 'undefined')
 
     // Starts query execution
     _startExecution: function () {
+      console.log("hi");
       var datasources = this.$datasources.val() || [];
       if (!datasources.length && !this.$allowNoSources)
         return alert('Please choose a datasource to execute the query.');
@@ -734,6 +744,8 @@ if (typeof global.process === 'undefined')
         const parsedQuery = new SparqlParser({ prefixes:this.options.prefixes, sparqlStar: true }).parse(query);
         query = new SparqlGenerator({}).stringify(parsedQuery);
       }
+      console.log(context);
+      console.log(query);
 
       this._queryWorker.postMessage({
         type: 'query',
