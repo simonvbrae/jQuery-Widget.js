@@ -1108,6 +1108,7 @@ console.log(0);
   }
 
   // TODO: Dynamically expose the version in ActorInitSparql so that we can retrieve it from there instead of relying on package.json reading.
+  console.log(document);
   document.getElementById('comunica-version').innerHTML = 'Comunica version: ' +
   require('comunica-packagejson').version;
 })(jQuery);

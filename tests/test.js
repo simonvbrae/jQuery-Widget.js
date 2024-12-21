@@ -4,17 +4,31 @@
 import { existsSync, readFileSync } from 'fs';
 import { execSync } from 'child_process';
 console.log("before-2");
-import { _startExecution } from '../src/ldf-client-ui';
+
+Object.defineProperty(window.document, 'getElementById', {
+    writable: true,
+    value: function(){
+        console.log("CALLED");
+        if (id === "comunica-version") {
+            return {"innerHTML": ""}
+        }
+    }
+});
+
+import { LdfQueryUI } from '../src/ldf-client-ui';
 console.log("before-1");
 import { TextEncoder, TextDecoder } from 'util';
 
 describe('Build test: generate.js', () => {
+    console.log("describe1");
     beforeAll(() => {
+        console.log("beforeAll");
         // TODO remove
     });
-
+    
     describe('generate.js', () => {
         describe('command line arguments', () => {
+            console.log("describe2");
             beforeEach(() => {
                 // TODO remove
             });
@@ -31,12 +45,31 @@ describe('Build test: generate.js', () => {
                 //     return {"innerHTML": ""}
                 // });
 
-                console.log("TextEncoder");
-                console.log(TextEncoder);
-                Object.assign(global, { TextDecoder, TextEncoder });
-                global.TextEncoder = TextEncoder;
-                global.TextDecoder = TextDecoder;
+                // global.document = {getElementById: (id) => {
+                //     console.log("CALLED");
+                //     if (id === "comunica-version") {
+                //         return {"innerHTML": ""}
+                //     }
+                // }};
+                
+                // Object.defineProperty(global, 'document', {getElementById: (id) => {
+                //     console.log("CALLED");
+                //     if (id === "comunica-version") {
+                //         return {"innerHTML": ""}
+                //     }
+                // }});
 
+                // Object.defineProperty(window.document, 'getElementById', {
+                //     writable: true,
+                //     value: function(){
+                //         console.log("CALLED");
+                //         if (id === "comunica-version") {
+                //             return {"innerHTML": ""}
+                //         }
+                //     }
+                // });
+
+                window.document.appendChild("<div id='comunica-version'><div></div></div>")
 
                 console.log("before");
                 let ui = LdfQueryUI();
